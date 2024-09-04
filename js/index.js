@@ -106,6 +106,34 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  let total = basePrice;
+  let ingredientList = document.querySelector('.panel.price ul');
+  ingredientList.innerHTML = ''; // Limpiar la lista antes de agregar los ingredientes
+
+  // Recorrer los ingredientes con querySelectorAll
+  document.querySelectorAll('.btn').forEach(eachButton => {
+    if (eachButton.classList.contains('btn-pepperoni') && state.pepperoni) {
+      total += ingredients.pepperoni.price;
+      ingredientList.innerHTML += `<li>$${ingredients.pepperoni.price} ${ingredients.pepperoni.name}</li>`;
+    } else if (eachButton.classList.contains('btn-mushrooms') && state.mushrooms) {
+      total += ingredients.mushrooms.price;
+      ingredientList.innerHTML += `<li>$${ingredients.mushrooms.price} ${ingredients.mushrooms.name}</li>`;
+    } else if (eachButton.classList.contains('btn-green-peppers') && state.greenPeppers) {
+      total += ingredients.greenPeppers.price;
+      ingredientList.innerHTML += `<li>$${ingredients.greenPeppers.price} ${ingredients.greenPeppers.name}</li>`;
+    } else if (eachButton.classList.contains('btn-sauce') && state.whiteSauce) {
+      total += ingredients.whiteSauce.price;
+      ingredientList.innerHTML += `<li>$${ingredients.whiteSauce.price} ${ingredients.whiteSauce.name}</li>`;
+    } else if (eachButton.classList.contains('btn-crust') && state.glutenFreeCrust) {
+      total += ingredients.glutenFreeCrust.price;
+      ingredientList.innerHTML += `<li>$${ingredients.glutenFreeCrust.price} ${ingredients.glutenFreeCrust.name}</li>`;
+    }
+  });
+
+  // Actualizar el precio total
+  document.querySelector('.panel.price strong').textContent = `$${total}`;
+
+
 }
 
 renderEverything();
