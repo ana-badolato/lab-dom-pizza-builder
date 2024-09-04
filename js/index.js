@@ -87,6 +87,21 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  const allButtons = document.querySelectorAll('.btn');
+  
+  allButtons.forEach(eachButton => {
+    if (eachButton.classList.contains('btn-pepperoni')) {
+      eachButton.classList.toggle('active', state.pepperoni);
+    } else if (eachButton.classList.contains('btn-mushrooms')) {
+      eachButton.classList.toggle('active', state.mushrooms);
+    } else if (eachButton.classList.contains('btn-green-peppers')) {
+      eachButton.classList.toggle('active', state.greenPeppers);
+    } else if (eachButton.classList.contains('btn-sauce')) {
+      eachButton.classList.toggle('active', state.whiteSauce);
+    } else if (eachButton.classList.contains('btn-crust')) {
+      eachButton.classList.toggle('active', state.glutenFreeCrust);
+    }
+  });
 }
 
 function renderPrice() {
